@@ -13,7 +13,7 @@ debug = True
 bots_channel = 'wcms-bots'
 
 play_regex = re.compile("^play\s([a-z0-9]+)$")
-speak_regex = re.compile("^speak\s([a-zA-Z0-9,'!?\- ]+)$")
+speak_regex = re.compile("^speak\s([a-zA-Z0-9.,'!?\- ]+)$")
 play_yt_regex = re.compile("^play-yt\s<?(https?:\/\/[a-z./]*\?v=[a-zA-Z0-9_-]*)>?(\s([0-9.]*)\s([0-9.]*)$)?")
 # lol that above regex matches the pattern:
 #     play-yt <yt video url> <start> <duration>
