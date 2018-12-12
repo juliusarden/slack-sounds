@@ -15,17 +15,21 @@ Installation
 
 #### Automatic w/ PyPI
 
-    $ sudo apt-get install python-dev
-    $ sudo pip install websocket
-    $ sudo pip install slackclient
+    $ brew install python-dev
+    $ pip install websocket
+    $ pip install slackclient
 
+    If you want youtube player
+    $ brew install youtube-dl
 You'll also need an audio player that can handle the format
 
     $ player path/to/file.mp3
+    e.g.
+    $ mpg123 sounds/laugh.mp3
 
 I recommend mpg123 because it 'just works' with mp3s. Alternatives are aplay, paplay, mplayer, etc.
 
-    $ sudo apt-get install mpg123
+    $ brew install mpg123
 
 Usage
 -----
