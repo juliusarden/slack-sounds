@@ -10,7 +10,7 @@ text2voice = 'espeak'
 sounds_dir = 'sounds'
 filetype = 'mp3'
 debug = True
-bots_channel = 'wcms-bots'
+bots_channel = 'sherpa_roast'
 
 play_regex = re.compile("^play\s([a-z0-9]+)$")
 speak_regex = re.compile("^speak\s([a-zA-Z0-9.,'!?\- ]+)$")
@@ -34,14 +34,14 @@ def action(command, message):
     if debug: print 'Running command: ' + command
     os.system(command)
 
-whitelist = {}
-with open(os.path.join(base_dir, 'whitelist.txt')) as f:
-    for line in f:
-        (name, identifier) = line.split()
-        whitelist[identifier] = name
+# whitelist = {}
+# with open(os.path.join(base_dir, 'whitelist.txt')) as f:
+#     for line in f:
+#         (name, identifier) = line.split()
+#         whitelist[identifier] = name
 
-print "Whitelist:"
-print whitelist
+# print "Whitelist:"
+# print whitelist
 
 f = open(os.path.join(base_dir, 'token.txt'))
 token = f.readline().rstrip()
@@ -54,12 +54,13 @@ if sc.rtm_connect():
     while True:
         for event in sc.rtm_read():
             if 'type' in event and event['type'] == 'message' and 'text' in event:
-                if ('user' in event and event['user'] in whitelist.keys()):
-                    user = whitelist[event['user']]
-                elif ('subtype' in event and event['subtype'] == 'bot_message' and 'bot_id' in event and event['bot_id'] in whitelist.keys()):
-                    user = whitelist[event['bot_id']]
-                else:
-                    user = False
+                # if ('user' in event and event['user'] in whitelist.keys()):
+                #     user = whitelist[event['user']]
+                # elif ('subtype' in event and event['subtype'] == 'bot_message' and 'bot_id' in event and event['bot_id'] in whitelist.keys()):
+                #     user = whitelist[event['bot_id']]
+                # else:
+                #     user = False
+                user = 'test-user'
                 if user:
                     if debug: print "Parsing message from " + user + ": '" + event['text'] + "'"
                     play_match = play_regex.match(event['text'])
